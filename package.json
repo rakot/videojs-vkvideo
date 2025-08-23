@@ -1,0 +1,35 @@
+{
+  "name": "videojs-vkvideo",
+  "description": "VkVideo playback technology for Video.js",
+  "version": "1.0.0",
+  "author": "Sergey Vardanyan",
+  "main": "dist/VkVideo.js",
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "videojs",
+    "video.js",
+    "vjs",
+    "VkVideo",
+    "tech"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rakot/videojs-vkvideo.git"
+  },
+  "peerDependencies": {
+    "video.js": "5.x || 6.x || 7.x || 8.x"
+  },
+  "scripts": {
+    "build": "mkdirp dist && cp src/VkVideo.js dist/VkVideo.js && uglifyjs src/VkVideo.js -o dist/VkVideo.min.js",
+    "validate": "npm ls",
+    "version": "npm run build && git add -f dist"
+  },
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "uglify-js": "^3.4.6"
+  },
+  "dependencies": {
+    "video.js": "5.x || 6.x || 7.x || 8.x"
+  }
+}
