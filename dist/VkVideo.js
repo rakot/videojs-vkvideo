@@ -14,8 +14,8 @@
 
 
     var Tech = videojs.getTech('Tech');
-    var VK_SCRIPT_SRC = 'https://vk.com/js/api/videoplayer.js';
-    var VK_HOSTS = ['vk.com', 'www.vk.com', 'vkvideo.ru', 'www.vkvideo.ru'];
+    var VK_SCRIPT_SRC = 'https://vk.ru/js/api/videoplayer.js';
+    var VK_HOSTS = ['vk.com', 'www.vk.com', 'vk.ru', 'www.vk.ru', 'vkvideo.ru', 'www.vkvideo.ru'];
 
     // ---- helpers -------------------------------------------------------------
 
@@ -70,7 +70,7 @@
             var u = new URL(url, window.location.href);
             return (u.pathname.indexOf('video_ext.php') !== -1) && VK_HOSTS.includes(u.hostname);
         } catch(e) {
-            return /:\/\/(www\.)?(vkvideo\.ru|vk\.com)\/.*video_ext\.php/.test(url);
+            return /:\/\/(www\.)?(vkvideo\.ru|vk\.com|vk\.ru)\/.*video_ext\.php/.test(url);
         }
     }
 
@@ -149,7 +149,7 @@
                 ownerId: null
             };
 
-            var regex = /^https?:\/\/(vk.com|vkvideo.ru)\/.*video(-?[0-9]+_[0-9]+)/;
+            var regex = /^https?:\/\/(vk\.com|vk\.ru|vkvideo\.ru)\/.*video(-?[0-9]+_[0-9]+)/;
             var match = url.match(regex);
 
             if (match && match[2].length > 10) {
@@ -166,7 +166,7 @@
                 var parsedSrc = this.parseUrl(src);
                 // allow id-based source { owner_id, id, hash, hd }
                 if (parsedSrc.ownerId && parsedSrc.id) {
-                    var base = 'https://vk.com/video_ext.php';
+                    var base = 'https://vk.ru/video_ext.php';
                     var params = new URLSearchParams({
                         oid: String(parsedSrc.ownerId),
                         id: String(parsedSrc.id),
